@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { ScrollView, StyleSheet, Text } from "react-native";
+import { Posts } from "./Posts"
 
 export default function Feed() {
     const [posts, setPosts] = useState()
@@ -13,12 +14,14 @@ export default function Feed() {
         <ScrollView style={styles.feed}>
             {!posts
                 ? <Text> Loading... </Text>
-                : posts.map( post => (
-                    <Text key={post.photoId}> {post.description} </Text>
+                : posts.map( (post) => (
+                    <Posts  key={post.photoId} post={post}/>
                 )) }
         </ScrollView>
     )
 }
+
+
 
 const styles = StyleSheet.create({
     feed: {
